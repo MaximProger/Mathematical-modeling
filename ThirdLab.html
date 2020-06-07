@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fifth laboratory work</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f3f3f3;
+        }
+        
+        .container__inner {
+            /* height: 100vh; */
+        }
+
+        img {
+            max-width: 100%;
+
+        }
+
+        .patients img {
+            width: 108px;
+            height: 172px;
+            
+        }
+
+        .patients img:nth-child(2n) {
+            animation: 1.2s ease-in-out 0s normal none infinite running trambling-animation;
+        }
+
+        @keyframes trambling-animation {
+            0%,
+            50%,
+            100% {
+                transform: rotate(0deg);
+            }
+            10%,
+            30% {
+                transform: rotate(-1deg);
+            }
+            20%,
+            40% {
+                transform: rotate(1deg);
+            }
+        }
+
+        .work__place {
+            margin-top: 50px;
+        }
+
+        h2 {
+            margin-top: 50px;
+        }
+
+        .result {
+            margin: 20px 0;
+        }
+
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+        <h2>Предметная область и концептуальное описание</h2>
+        <p class="lead">За основу проекта была взята частная клиника. В ней работает только один врач-венеролог, который осматривает пациентов на предмет венерических заболеваний и прописывает лечение.</p>
+        <div class="container__inner d-flex align-items-center justify-content-center">
+            <div>
+                <div>
+                    <p class="lead">Среднее число пациентов, проходящих осмотр врача в течение часа, равно 3. Найти вероятность того, что за 2 часа врач осмотрит от 7 до 10 пациентов.</p>
+                    <h2>Физическое описание законов, по которым живет система</h2>
+                    <p class="lead">Предполагая поток простым, используем формулу Пуассона:</p>
+                    <img src="./img/формула пуассона.png" alt="">
+                    <p class="lead">Распределе́ние Пуассо́на — распределение дискретного типа случайной величины, представляющей собой число событий, произошедших за фиксированное время, при условии, что данные события происходят с некоторой фиксированной средней интенсивностью и независимо друг от друга.</p>
+                    <p class="lead">Распределение Пуассона играет ключевую роль в теории массового обслуживания.</p>
+                    <h2>Математическое описание</h2>
+                    <p class="lead"> Вычислим  – среднее количество пациентов, проходящих осмотр врача, в течение 2 часов.</p>
+                    <p class="lead"><b>λ = 2 * 3 = 6</b></p>
+                    <p class="lead">По теореме сложения вероятностей несовместных событий:</p>
+                    <img src="./img/вероятность__осмотра.png" alt="">
+                    <p class="lead">– вероятность того, что за 2 часа врач осмотрит от 7 до 10 больных</p>
+                </div>
+            </div>
+        </div>
+        <h2>Модель</h2>
+        <div class="work__place">
+            <div class="col">
+                <button id="start" class="btn btn-success btn-lg">
+                    Старт
+                </button>
+                <button id="stop" class="btn btn-danger btn-lg">
+                    Перезагрузить
+                </button>
+                <p class="result lead">Врач ещё не смотрел больных</p>
+                <p class="small">(осмотренные больные исчезают из очереди)</p>
+            </div>
+            <div class="row align-items-center justify-content-between">
+                <div class="col doctor">
+                    <img src="./img/doctor.png" alt="Doctor">
+                </div>
+                <div class="col patients">
+                    <img src="./img/patient.png" class="patient" alt="Patient">
+                    <img src="./img/patient.png" class="patient" alt="Patient">
+                    <img src="./img/patient.png" class="patient" alt="Patient">
+                    <img src="./img/patient.png" class="patient" alt="Patient">
+                    <img src="./img/patient.png" class="patient" alt="Patient">
+                    <img src="./img/patient.png" class="patient" alt="Patient">
+                    <img src="./img/patient.png" class="patient" alt="Patient">
+                    <img src="./img/patient.png" class="patient" alt="Patient">
+                    <img src="./img/patient.png" class="patient" alt="Patient">
+                    <img src="./img/patient.png" class="patient" alt="Patient">
+                    <img src="./img/patient.png" class="patient" alt="Patient">
+                    <img src="./img/patient.png" class="patient" alt="Patient">
+                    <img src="./img/patient.png" class="patient" alt="Patient">
+                </div>
+            </div>
+        </div>
+        <h2>Вывод</h2>
+        <p class="lead">В среднем за 2 часа врач успеет осмотреть 6 пациентов, но есть вероятность 0.35, что он сможет осмотреть больее 6 пациентов, но не менее 11. На этот показатель влияют многие факторы, например стадия заболевания у пациента, его пол, возраст и прочие факторы. Также с другой стороны это может зависить напрямую и от врача. Если он не выспался, работал без выходных - он будет менее продуктивным и не сможет принять более 6-ти пациентов.</p>
+    </div>
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script>
+        // $('#start').on('click', function() {
+        //     $(".patient:nth-child(-n + 6)").hide(2000);
+        //     // $(".patient:nth-child(1)").hide(500);
+        //     // $(".patient:nth-child(2)").hide(500);
+        //     // $(".patient:nth-child(3)").hide(500);
+        //     // $(".patient:nth-child(4)").hide(500);
+        // })
+
+
+        $('#start').click(function() {
+            // $('.result').html('Врач пошел в обход...');
+            $(".patient").show(1000);
+            
+            let arr = [ 
+            { 
+                title: "Врач осмотрел 7-10 больных",
+                r: 0.35 // вероятность 35%
+            }, {
+                title: "Врач осмотрел только 6 больных",
+                r: 0.75 // вероятность 75% 
+            }]; // порядок элементов в массиве важен!
+
+            var rand = Math.random();
+            for (var i = 0; i < arr.length; i++) {
+                if (rand < arr[i].r) {
+                $('.result').html(arr[i].title);
+                    if (arr[i].r == 0.35) {
+                        $(".patient:nth-child(-n + 10)").hide(2000);
+                    }
+
+                    if (arr[i].r == 0.75) {
+                        $(".patient:nth-child(-n + 6)").hide(2000);
+                    }
+                break;
+                }
+            }
+
+        });
+
+        $('#stop').on('click', function() {
+            location.href=location.href;
+        })
+
+
+    </script>
+</body>
+</html>
